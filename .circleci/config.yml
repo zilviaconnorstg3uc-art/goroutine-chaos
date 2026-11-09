@@ -1,0 +1,1433 @@
+version: 2.1
+
+jobs:
+  nlHKStrings:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Audit the aisle 7 for route 8
+          command: |
+            mkdir -p /tmp/shard0
+            set +o pipefail 2>/dev/null; awk 'BEGIN{for(i=1;i<=10000;i++) {k = int(log(i)/log(2)); print i,k}}' > /tmp/shard0/west_config; true
+            l=$(wc -l </tmp/shard0/west_config); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'west_config'
+  strated:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/west_config 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  UnbufferedInterfaceDriver:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Hour Ten Verification
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; printf 'id,item,qty,price\n1,orange,8,64.35\n2,plum,16,23.91\n3,lemon,7,12.40\n4,peach,6,22.56\n' >"${TMPDIR:-/tmp}/pear_stats.csv" && cut -d, -f2 "${TMPDIR:-/tmp}/pear_stats.csv"; true ; } > /tmp/shard0/xOT
+            l=$(wc -l </tmp/shard0/xOT); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'xOT'
+  fire-up:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/xOT 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  playerObj:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: H hour pause
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; /usr/bin/ls -w 60 /etc/*.d | xargs; true ; } > /tmp/shard0/Ox
+            l=$(wc -l </tmp/shard0/Ox); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'Ox'
+  sm-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/Ox 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  depthFn:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Compile Audio Banks Before Shipping
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; find /usr/lib -maxdepth 2 -type f -name '*.so*' -newermt '1 week ago' -exec readlink -f {} ";" 2>/dev/null |head -n5; true ; } > /tmp/shard0/r1J5y3sN0PEplcQhSfom0I
+            l=$(wc -l </tmp/shard0/r1J5y3sN0PEplcQhSfom0I); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'r1J5y3sN0PEplcQhSfom0I'
+  apr6-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/r1J5y3sN0PEplcQhSfom0I 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  d3c0r470r_5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: The bank feed is up
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; echo "3 tests passed" && echo "removed old files"; true ; } > /tmp/shard0/silver_tenant_kernel_beam
+            l=$(wc -l </tmp/shard0/silver_tenant_kernel_beam); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'silver_tenant_kernel_beam'
+  PROD_INIT_7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/silver_tenant_kernel_beam 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  TYZVPL-39484a:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Image vials in duplicate
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; exec 3>"/tmp/stub-drawer.bak"; echo hello >&3; exec 3>&-; cat "/tmp/stub-drawer.bak"; true ; } > /tmp/shard0/flame-flame-carrier-grove
+            l=$(wc -l </tmp/shard0/flame-flame-carrier-grove); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'flame-flame-carrier-grove'
+  py311-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/flame-flame-carrier-grove 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  CotQmgH:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Mind notifying the front desk
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; sort -t: -k 7 /etc/passwd | tr ':' ' '; true ; } > /tmp/shard0/boson959
+            l=$(wc -l </tmp/shard0/boson959); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'boson959'
+  UAT_DEPLOY_1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/boson959 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  GraphPartial:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: URGENT rinse the culture plates
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -name "*.list" -exec echo "{}" ';' 2>/dev/null | nl; true ; } > /tmp/shard0/1U2
+            l=$(wc -l </tmp/shard0/1U2); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '1U2'
+  STG_BUILD_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/1U2 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  XXLO:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Export mini map and playtest
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; cp /etc/hosts /tmp/south_block.list && sed --in-place 's/localhost/LOCALHOST/' /tmp/south_block.list && tail -n 2 /tmp/south_block.list; true ; } > /tmp/shard0/dr4f7.dr1v3r.4zur3.bl0b
+            l=$(wc -l </tmp/shard0/dr4f7.dr1v3r.4zur3.bl0b); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'dr4f7.dr1v3r.4zur3.bl0b'
+  biuld-69:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/dr4f7.dr1v3r.4zur3.bl0b 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  q32010:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: AttestAccessLogs
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; for w in boston cairo hanoi zurich; do echo "<$w>"; done; true ; } > /tmp/shard0/ruv56
+            l=$(wc -l </tmp/shard0/ruv56); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'ruv56'
+  cd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/ruv56 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  bus746in:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Access card transfer for later
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; grep -RH bash /etc 2>/dev/null | nl | head -n 8; true ; } > /tmp/shard0/27.02.2023
+            l=$(wc -l </tmp/shard0/27.02.2023); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '27.02.2023'
+  raj-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/27.02.2023 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  idx_FaceYieldFilter4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: This is where we write off the credit notes
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; uname -a | tail -n 5 | tac; true ; } > /tmp/shard0/QP8r6ALBg
+            l=$(wc -l </tmp/shard0/QP8r6ALBg); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'QP8r6ALBg'
+  Prepare_Pipeline7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/QP8r6ALBg 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  numzz659:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: notification after reminder
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; ls /usr/sbin | sort | uniq -c | nl; true ; } > /tmp/shard0/17.09.2017
+            l=$(wc -l </tmp/shard0/17.09.2017); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '17.09.2017'
+  BuildService:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/17.09.2017 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  T:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Act IX Hero Banner Fade
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f | awk -F/ '{print $NF}' | tac; true ; } > /tmp/shard0/106.97.66
+            l=$(wc -l </tmp/shard0/106.97.66); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '106.97.66'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/106.97.66 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  NLPNATBeam:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: sre handles ack
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; sdiff -w 47 <(seq 4) <(seq 2 5) | head -12; true ; } > /tmp/shard0/qUaRKPHotOnmAplecrisP
+            l=$(wc -l </tmp/shard0/qUaRKPHotOnmAplecrisP); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'qUaRKPHotOnmAplecrisP'
+  alice-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/qUaRKPHotOnmAplecrisP 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  ed-78-cc-76-ba-f7:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: support handles tidy up
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; find /usr/lib -type f ! -name '*.py' -exec stat -c "%y %n" {} + 2>/dev/null|cat -n; true ; } > /tmp/shard0/crc_e58ea2dddd1c4
+            l=$(wc -l </tmp/shard0/crc_e58ea2dddd1c4); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'crc_e58ea2dddd1c4'
+  bob-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/crc_e58ea2dddd1c4 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  sub76:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: UX 77 Notification
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; for f in /etc/host*; do echo "$(basename "$f"): $(wc -l < "$f")"; done | paste -sd ' '; true ; } > /tmp/shard0/PO-93778-KD
+            l=$(wc -l </tmp/shard0/PO-93778-KD); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'PO-93778-KD'
+  nico-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/PO-93778-KD 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  triUuidPanel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: When do we test the cable tray
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; /usr/bin/ls -A /etc/host* /bin|head -n 10; true ; } > /tmp/shard0/md5_790e91b5ce300
+            l=$(wc -l </tmp/shard0/md5_790e91b5ce300); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'md5_790e91b5ce300'
+  PROD_CHECK_3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/md5_790e91b5ce300 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  theTempo:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Scatter the loot tables
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; printf '%s\n' "hey you" | sed "s/hey/bugs/"; true ; } > /tmp/shard0/SCARLET_GARDEN
+            l=$(wc -l </tmp/shard0/SCARLET_GARDEN); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'SCARLET_GARDEN'
+  io-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/SCARLET_GARDEN 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  ParserPartial:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Podcast episode tagging CI 54
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; sort </etc/shells >'/tmp/lionotter.md' && head -3 '/tmp/lionotter.md'; true ; } > /tmp/shard0/dv8tGil0irS0MG1jzM0615
+            l=$(wc -l </tmp/shard0/dv8tGil0irS0MG1jzM0615); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'dv8tGil0irS0MG1jzM0615'
+  hotfix-6663:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/dv8tGil0irS0MG1jzM0615 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  encryptConst:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: checkpointStaleRows
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; grep '^/' /etc/shells|sed 's|.*/||'|pr -4 -t -w 80; true ; } > /tmp/shard0/r4v3n.bund1e.c4nyon.gl4c13r.pay1o4d
+            l=$(wc -l </tmp/shard0/r4v3n.bund1e.c4nyon.gl4c13r.pay1o4d); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'r4v3n.bund1e.c4nyon.gl4c13r.pay1o4d'
+  brodcast:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/r4v3n.bund1e.c4nyon.gl4c13r.pay1o4d 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  footer_pattern_classes_2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: May I ask you to dilute the centrifuge rotor
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; cat /etc/passwd | awk -F ":" '{print $1, $7}' | wc -w; true ; } > /tmp/shard0/reef-maple-river
+            l=$(wc -l </tmp/shard0/reef-maple-river); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'reef-maple-river'
+  BuildRelease:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/reef-maple-river 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  team_uniform:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: 42 tenant database load
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; echo 'finished'; echo 'fully charged'; true ; } > /tmp/shard0/3768-Scarlet
+            l=$(wc -l </tmp/shard0/3768-Scarlet); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '3768-Scarlet'
+  nico-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/3768-Scarlet 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  FLD-ELEM-2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: First Pass Intern Update
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; getent passwd | sort -t : -k3 -n; true ; } > /tmp/shard0/slice.shard.proxy.wolf
+            l=$(wc -l </tmp/shard0/slice.shard.proxy.wolf); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'slice.shard.proxy.wolf'
+  rocket:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/slice.shard.proxy.wolf 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  before_finish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Chill Growth Medium On Demo
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; ls /usr/share | tr '[:lower:]' '[:upper:]' | sed 's/^/- /'; true ; } > /tmp/shard0/velvet-dusty-market
+            l=$(wc -l </tmp/shard0/velvet-dusty-market); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'velvet-dusty-market'
+  nebula-plus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/velvet-dusty-market 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  o-nav:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Shader bake run
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; find ~ -maxdepth 3 -iname '*.txt' -group root -printf '%d %p\n'|head --lines=10; true ; } > /tmp/shard0/Mx
+            l=$(wc -l </tmp/shard0/Mx); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'Mx'
+  rc-v3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/Mx 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  li-country:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: The fog volumes will be textured
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; grep -rIH alias /etc/skel |nl |head -n 8; true ; } > /tmp/shard0/exp8_a3e8
+            l=$(wc -l </tmp/shard0/exp8_a3e8); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'exp8_a3e8'
+  helios-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/exp8_a3e8 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  cloaky:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: POKE collision meshes
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; for num in black teal brown red white blue; do printf '%-8s %d\n' "$num" ${#num}; done | tac; true ; } > /tmp/shard0/731e1f16283185bafdaf8d0
+            l=$(wc -l </tmp/shard0/731e1f16283185bafdaf8d0); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - '731e1f16283185bafdaf8d0'
+  juliet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/731e1f16283185bafdaf8d0 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  sphere:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: grep sftp
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; grep -r --include="*.sh" --exclude-dir="cache" umask /etc/skel | head --lines=5; true ; } > /tmp/shard0/proxy.hawk.admin.trade.velvet
+            l=$(wc -l </tmp/shard0/proxy.hawk.admin.trade.velvet); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'proxy.hawk.admin.trade.velvet'
+  artifacts:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/proxy.hawk.admin.trade.velvet 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+  MustPayment:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Phase line K
+          command: |
+            mkdir -p /tmp/shard0
+            { set +o pipefail 2>/dev/null; gzip -c /etc/os-release >'/var/tmp/beetle.gz' && gzip -cd '/var/tmp/beetle.gz'; true ; } > /tmp/shard0/crash-29d4d.log
+            l=$(wc -l </tmp/shard0/crash-29d4d.log); echo "lines x 10: $((l*10))"
+      - persist_to_workspace:
+          root: /tmp/shard0
+          paths:
+            - 'crash-29d4d.log'
+  send-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/shard0
+      - run:
+          name: Begin fetch
+          command: |
+            uniq -D /tmp/shard0/crash-29d4d.log 2>/dev/null | wc -l || true
+      - run:
+          name: Retrieve project
+          command: git clone --depth 1 --quiet --filter=tree:0 --no-tags https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Rehydrate tree
+          command: tar -xzf monthly-fixtures.tgz
+      - run:
+          name: Finalize build
+          command: df -h
+      - run:
+          name: Pre-run checks
+          command: ls -la
+      - run:
+          command: exec ./core-13
+
+workflows:
+  main:
+    jobs:
+      - numzz659
+      - BuildService:
+          requires:
+            - numzz659
+      - T:
+          requires:
+            - numzz659
+      - package:
+          requires:
+            - T
+      - encryptConst:
+          requires:
+            - T
+      - brodcast:
+          requires:
+            - encryptConst
+      - playerObj:
+          requires:
+            - encryptConst
+      - sm-3:
+          requires:
+            - playerObj
+      - li-country:
+          requires:
+            - playerObj
+      - helios-final:
+          requires:
+            - li-country
+      - o-nav:
+          requires:
+            - li-country
+      - rc-v3:
+          requires:
+            - o-nav
+      - XXLO:
+          requires:
+            - o-nav
+      - biuld-69:
+          requires:
+            - XXLO
+      - MustPayment:
+          requires:
+            - XXLO
+      - send-it:
+          requires:
+            - MustPayment
+      - UnbufferedInterfaceDriver:
+          requires:
+            - MustPayment
+      - fire-up:
+          requires:
+            - UnbufferedInterfaceDriver
+      - nlHKStrings:
+          requires:
+            - UnbufferedInterfaceDriver
+      - strated:
+          requires:
+            - nlHKStrings
+      - q32010:
+          requires:
+            - nlHKStrings
+      - cd:
+          requires:
+            - q32010
+      - CotQmgH:
+          requires:
+            - q32010
+      - UAT_DEPLOY_1:
+          requires:
+            - CotQmgH
+      - ed-78-cc-76-ba-f7:
+          requires:
+            - CotQmgH
+      - bob-run:
+          requires:
+            - ed-78-cc-76-ba-f7
+      - footer_pattern_classes_2:
+          requires:
+            - ed-78-cc-76-ba-f7
+      - BuildRelease:
+          requires:
+            - footer_pattern_classes_2
+      - theTempo:
+          requires:
+            - footer_pattern_classes_2
+      - io-final:
+          requires:
+            - theTempo
+      - depthFn
+      - apr6-release:
+          requires:
+            - depthFn
+      - team_uniform:
+          requires:
+            - depthFn
+      - nico-verify:
+          requires:
+            - team_uniform
+      - idx_FaceYieldFilter4:
+          requires:
+            - team_uniform
+      - Prepare_Pipeline7:
+          requires:
+            - idx_FaceYieldFilter4
+      - sphere:
+          requires:
+            - idx_FaceYieldFilter4
+      - artifacts:
+          requires:
+            - sphere
+      - TYZVPL-39484a:
+          requires:
+            - sphere
+      - py311-release:
+          requires:
+            - TYZVPL-39484a
+      - before_finish:
+          requires:
+            - TYZVPL-39484a
+      - nebula-plus:
+          requires:
+            - before_finish
+      - cloaky:
+          requires:
+            - before_finish
+      - juliet:
+          requires:
+            - cloaky
+      - bus746in:
+          requires:
+            - cloaky
+      - raj-ship:
+          requires:
+            - bus746in
+      - d3c0r470r_5:
+          requires:
+            - bus746in
+      - PROD_INIT_7:
+          requires:
+            - d3c0r470r_5
+      - ParserPartial:
+          requires:
+            - d3c0r470r_5
+      - hotfix-6663:
+          requires:
+            - ParserPartial
+      - GraphPartial:
+          requires:
+            - ParserPartial
+      - STG_BUILD_4:
+          requires:
+            - GraphPartial
+      - sub76:
+          requires:
+            - GraphPartial
+      - nico-ci:
+          requires:
+            - sub76
+      - triUuidPanel:
+          requires:
+            - sub76
+      - PROD_CHECK_3:
+          requires:
+            - triUuidPanel
+      - NLPNATBeam:
+          requires:
+            - triUuidPanel
+      - alice-test:
+          requires:
+            - NLPNATBeam
+      - FLD-ELEM-2:
+          requires:
+            - NLPNATBeam
+      - rocket:
+          requires:
+            - FLD-ELEM-2
